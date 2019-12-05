@@ -1,0 +1,21 @@
+function find_a_dev_port() {
+    local devport=$(jot -r - 28000 28999 | head -1)
+    lsof -nP -i4TCP:$devport > /dev/null
+    if [[ $? == 1 ]] ; then
+        echo $port,$devport
+    else
+        find_a_port
+    fi
+}
+
+function find_a_port() {
+    local port=$(jot -r - 25000 25999 | head -1)
+    lsof -nP -i4TCP:$port > /dev/null
+    if [[ $? == 1 ]] ; then
+        find_a_dev_port
+    else
+        find_a_port
+    fi
+}
+
+find_a_port

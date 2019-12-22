@@ -1,10 +1,11 @@
-local_nginx_location=/usr/local/etc/nginx/servers/
+source config.env
 if (( $# != 1 )); then
   echo "please name your app!"
   exit
 fi
 node index.js $1
-cd $1 
+mv $1 $app_location
+cd $app_location/$1
 npm i
 npm run build
 pm2 start server.js --name $1

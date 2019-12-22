@@ -18,11 +18,11 @@ To create an app called postcard, running as subdomain at io37.ch
 ./bin/create postcard.io37.ch
 ```
 
-This will create a skeleton react/node/nginx app available at https://postcard.io37.ch and add the name to config.env
+This will create a skeleton react/node/nginx app available at https://postcard.io37.ch.test and add the name to config.env
 
 # What does it do?
 
-### create.sh
+### create.
 
 1. creates an nginx file for your app, with app name (eg cadiz) and port set
 2. creates a directory for your app, and uploads the template server.js file, the created package.json and a dist folder with an index.html inside

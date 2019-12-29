@@ -1,5 +1,5 @@
 source config.env
-rsync --rsh=ssh -av server.js "root@$server:/var/www/html/$server"
-rsync --rsh=ssh -av dist "root@$server:/var/www/html/$server"
-rsync --rsh=ssh -av package.json "root@$server:/var/www/html/$server"
-ssh root@$server pm2 restart $server
+rsync -Pav -e "ssh -i $key" server.js $user@$server:/var/www/html/$server
+rsync -Pav -e "ssh -i $key" dist "$user@$server:/var/www/html/$server"
+rsync -Pav -e "ssh -i $key" package.json "$user@$server:/var/www/html/$server"
+ssh $user@$server -i $key pm2 restart $server

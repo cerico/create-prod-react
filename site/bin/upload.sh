@@ -1,5 +1,5 @@
 source config.env
-sftp root@$server << EOF
+sftp -i $key $user@$server << EOF
   cd /etc/nginx/conf.d
   put nginx/$server.conf
   mkdir /var/www/html/$server
@@ -10,12 +10,12 @@ sftp root@$server << EOF
   put -r dist
   bye
 EOF
-ssh root@$server << EOF
+ssh $user@$server -i $key << EOF
   cd /var/www/html/$server
   npm install --only=production
   pm2 start server.js --name $server
   pm2 save
-  service nginx stop
-  /opt/letsencrypt/letsencrypt-auto certonly --standalone -d $server
-  service nginx start
+  sudo service nginx stop
+  sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone -d $server
+  sudo service nginx start
 EOF

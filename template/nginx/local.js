@@ -1,6 +1,6 @@
 module.exports = (AppName, Port, DevPort) => `server {
     listen 80;
-    server_name www.${AppName}.test ${AppName}.test;
+    server_name ${AppName.split('.')[0]}.test ${AppName}.test;
 
     location / {
       proxy_pass http://localhost:${Port};
@@ -14,7 +14,7 @@ module.exports = (AppName, Port, DevPort) => `server {
 
   server {
     listen 80;
-    server_name dev.${AppName}.test;
+    server_name dev.${AppName.split('.')[0]}.test dev.${AppName}.test;
 
     location / {
       proxy_pass http://localhost:${DevPort};

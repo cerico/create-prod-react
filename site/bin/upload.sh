@@ -16,6 +16,6 @@ ssh $user@$server -i $key << EOF
   pm2 start server.js --name $server
   pm2 save
   sudo service nginx stop
-  sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone -d $server
+  sudo /opt/letsencrypt/letsencrypt-auto certonly --standalone -d $server -n
   sudo service nginx start
 EOF

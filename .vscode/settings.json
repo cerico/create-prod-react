@@ -1,0 +1,22 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#428244",
+        "activityBar.activeBorder": "#acaad4",
+        "activityBar.background": "#428244",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#acaad4",
+        "activityBarBadge.foreground": "#15202b",
+        "statusBar.background": "#316032",
+        "statusBar.border": "#316032",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#428244",
+        "titleBar.activeBackground": "#316032",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.border": "#316032",
+        "titleBar.inactiveBackground": "#31603299",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "workbench.colorTheme": "HBuilderX Soft Green Light",
+    "peacock.color": "#316032"
+}

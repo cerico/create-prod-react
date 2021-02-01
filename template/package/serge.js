@@ -5,23 +5,20 @@ module.exports = (AppName, author) => `{
     "main": "server.js",
     "dependencies": {
       "css-mqpacker": "^7.0.0",
-      "postcss": "^8.2.4",
-      "postcss-cli": "^8.3.1",
-      "postcss-combine-duplicated-selectors": "^10.0.2",
       "sass": "^1.26.10",
       "sergey": "0.0.13"
     },
     "scripts": {
-      "dev": "sergey --watch --port=8500 --exclude=.vscode,*.conf,src",
+      "serge": "sergey --watch --port=8200 --exclude=.vscode,src",
+      "build": "npm run build:css && sergey --exclude=.vscode,src",
       "netlify": "netlify deploy --prod -d public",
-      "sass": "sass --no-source-map src/style.scss files/style.css ",
+      "sass": "sass --no-source-map src/style.scss files/style.css",
+      "sass-watch": "sass --watch --no-source-map src/style.scss files/style.css",
       "mqpacker": "mqpacker -s ./files/style.css ./files/style.css",
-      "minify": "sass --no-source-map files/style.css files/style.min.css --style compressed",
-      "build": "npm run sass && npm run mqpacker && npm run combine && npm run minify",
-      "create": "sergey --exclude=.vscode,*.conf,src",
-      "combine": "postcss --no-map files/style.css --use postcss-combine-duplicated-selectors --output files/style.css",
-      "go": "npm run dev & npm run sass"
+      "build:css": "npm run sass && npm run mqpacker",
+      "dev": "npm run serge & npm run sass-watch"
     },
-     "author": "${author}",
+    "author": "${author}",
     "license": "ISC"
   }`
+

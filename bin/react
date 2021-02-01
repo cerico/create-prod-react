@@ -12,7 +12,6 @@ pm2 start server.js --name $1
 pm2 save
 cp nginx/$1.test.conf $local_nginx_location
 sudo brew services reload nginx
-open -n -a "Firefox" --args "--new-window" "{$1}.test"
 git init
 git add .
 git commit -m "first"

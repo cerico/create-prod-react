@@ -16,7 +16,7 @@ const { spawn, spawnSync } = require('child_process')
 const createLocalNginx = require('./template/nginx/serge.js');
 const createPackageJson = require('./template/package/serge.js')
 
-spawnSync('cp', ['-r', './site', 'serge', AppName])
+spawnSync('cp', ['-r', './site/serge', AppName])
 
 const who = spawnSync('whoami')
 const author = who.stdout.toString().trim()
@@ -24,7 +24,7 @@ const LocalNginxData = createLocalNginx(AppName, Location);
 const PackageJsonData = createPackageJson(AppName, author)
 
 const createApp = (LocalNginxData, PackageJsonData) => {
-  let localNginx = path.resolve(process.cwd(), AppName, 'nginx', `${AppName}.test.conf`);
+  let localNginx = path.resolve(process.cwd(), AppName, `${AppName}.test.conf`);
   fs.writeFile(localNginx, LocalNginxData, function (err) {
     console.log(`${localNginx} created`)
   })

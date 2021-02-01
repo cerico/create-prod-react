@@ -1,0 +1,16 @@
+source config.env
+if (( $# != 1 )); then
+  echo "please name your app!"
+  exit
+fi
+node serge.js $1 $app_location/$1
+mv $1 $app_location
+cd $app_location/$1
+npm i
+npm run build
+cp nginx/$1.test.conf $local_nginx_location
+sudo brew services reload nginx
+open -n -a "Firefox" --args "--new-window" "{$1}.test"
+git init
+git add .
+git commit -m "first"

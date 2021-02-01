@@ -15,3 +15,4 @@ sudo brew services reload nginx
 git init
 git add .
 git commit -m "first"
+echo "app created at $app_location/$1"
